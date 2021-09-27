@@ -2,12 +2,14 @@ package com.example.challengesapi.service;
 
 import com.example.challengesapi.dao.ChallengeDAO;
 import com.example.challengesapi.model.Challenge;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ChallengeService {
+    @Autowired
     private ChallengeDAO challengeDAO;
 
     public void createChallenge(Challenge challenge) {

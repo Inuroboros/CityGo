@@ -16,13 +16,13 @@ public class CompanyService {
     public List<Company> findAllCompany() {return daoCompany.findAll();}
 
     public Optional<Company> findCompanyById(Long id){return daoCompany.findById(id);}
-
+/*
     public Optional<Company> findCompanyByName(String companyName){return daoCompany.findCompanyByName(companyName);}
 
     public Optional<Company> findCompanyByBIK(String bik){return daoCompany.findCompanyByBIK(bik);}
 
     public Optional<Company> findCompanyByAddress(String address){return daoCompany.findCompanyByAddress(address);}
-
+*/
     public void createCompany(Company company){daoCompany.save(company);}
 
     public void deleteCompany(Long id){daoCompany.deleteById(id);}
