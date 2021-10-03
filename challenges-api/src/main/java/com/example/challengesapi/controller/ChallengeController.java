@@ -17,16 +17,17 @@ public class ChallengeController {
     @Autowired
     private ChallengeService service;
 
-    private RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     @PostMapping("/register")
-    public void createChallenge(@RequestBody Challenge challenge) {
-        //Challenge challenge = new Challenge(new Long(1), "Riddle???", "Answer!!!!", new Long(1), java.util.Calendar.getInstance().getTime(), java.util.Calendar.getInstance().getTime());
+    public void createChallenge() { //@RequestBody Challenge challenge
+        Challenge challenge = new Challenge(new Long(1), "Riddle for eureka???", "Answer!!!!", new Long(1), java.util.Calendar.getInstance().getTime(), java.util.Calendar.getInstance().getTime());
         service.createChallenge(challenge);
         Log log = new Log(1,"ChallengeService", "POST", challenge.toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://localhost:8085/logs", request, Log.class);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
 
         System.out.println(log.toString());
     }
@@ -37,7 +38,7 @@ public class ChallengeController {
         Log log = new Log(1,"ChallengeService", "UPDATE", challenge.toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://localhost:8085/logs", request, Log.class);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
 
         System.out.println(log.toString());
     }
@@ -53,7 +54,7 @@ public class ChallengeController {
         Log log = new Log(1,"ChallengeService", "DELETE", challenge.toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://localhost:8085/logs", request, Log.class);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
 
         System.out.println(log.toString());
     }
