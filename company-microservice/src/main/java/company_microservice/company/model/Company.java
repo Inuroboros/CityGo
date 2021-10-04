@@ -13,5 +13,5 @@ public class Company {
 
     private String companyName;
     private String BIK;
-    private String Address;
+    private String address;
 }

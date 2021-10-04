@@ -17,14 +17,15 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
-    private RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    private RestTemplate restTemplate;
 
     @GetMapping("")
     public List<Company> findAllCompanies(){
         Log log = new Log(1, "CompanyService", "GET", "List of companies");
 
         HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://localhost:8085/logs", request, Log.class);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
 
         System.out.println(log.toString());
 
@@ -37,12 +38,12 @@ public class CompanyController {
         Log log = new Log(1, "CompanyService", "GET", companyService.findCompanyById(id).toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://localhost:8085/logs", request, Log.class);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
         System.out.println(log.toString());
 
         return companyService.findCompanyById(id);
     }
-/*
+
     @GetMapping("/companyName/{companyName}")
     public Optional<Company> findCompanyByName(@PathVariable String companyName){
         return companyService.findCompanyByName(companyName);
@@ -57,13 +58,13 @@ public class CompanyController {
     public Optional<Company> findCompanyByAddress(@PathVariable String address){
         return companyService.findCompanyByAddress(address);
     }
-*/
+
     @PostMapping("/create")
     public void createCompany(@RequestBody Company company){
         Log log = new Log(1, "CompanyService", "POST", company.toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://localhost:8085/logs", request, Log.class);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
         System.out.println(log.toString());
 
         companyService.createCompany(company);
@@ -74,7 +75,7 @@ public class CompanyController {
         Log log = new Log(1, "CompanyService", "DELETE", companyService.findCompanyById(id).toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://localhost:8085/logs", request, Log.class);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
         System.out.println(log.toString());
 
         companyService.deleteCompany(id);

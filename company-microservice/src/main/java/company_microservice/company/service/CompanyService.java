@@ -1,6 +1,6 @@
 package company_microservice.company.service;
 
-import company_microservice.company.DAO.DAOCompany;
+import company_microservice.company.DAO.CompanyDAO;
 import company_microservice.company.model.Company;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,19 +11,21 @@ import java.util.Optional;
 @Service
 public class CompanyService {
     @Autowired
-    private DAOCompany daoCompany;
+    private CompanyDAO companyDAO;
 
-    public List<Company> findAllCompany() {return daoCompany.findAll();}
+    public List<Company> findAllCompany() {return companyDAO.findAll();}
 
-    public Optional<Company> findCompanyById(Long id){return daoCompany.findById(id);}
-/*
-    public Optional<Company> findCompanyByName(String companyName){return daoCompany.findCompanyByName(companyName);}
+    public Optional<Company> findCompanyById(Long id){return companyDAO.findById(id);}
 
-    public Optional<Company> findCompanyByBIK(String bik){return daoCompany.findCompanyByBIK(bik);}
+    public Optional<Company> findCompanyByName(String companyName){return companyDAO.findCompanyByCompanyName(companyName);}
 
-    public Optional<Company> findCompanyByAddress(String address){return daoCompany.findCompanyByAddress(address);}
-*/
-    public void createCompany(Company company){daoCompany.save(company);}
+    public Optional<Company> findCompanyByBIK(String bik){return companyDAO.findCompanyByBIK(bik);}
 
-    public void deleteCompany(Long id){daoCompany.deleteById(id);}
+    public Optional<Company> findCompanyByAddress(String address){return companyDAO.findCompanyByAddress(address);}
+
+    public void createCompany(Company company){
+        companyDAO.save(company);}
+
+    public void deleteCompany(Long id){
+        companyDAO.deleteById(id);}
 }

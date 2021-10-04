@@ -7,6 +7,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 @Repository
-public interface DAOCompany extends JpaRepository<Company, Long> {
+public interface CompanyDAO extends JpaRepository<Company, Long> {
 
+    Optional<Company> findCompanyByCompanyName(String companyName);
+
+    Optional<Company> findCompanyByBIK(String bik);
+
+    Optional<Company> findCompanyByAddress(String address);
 }

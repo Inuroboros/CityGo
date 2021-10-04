@@ -2,7 +2,7 @@ package user_microservice.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import user_microservice.user.DAO.DAOUser;
+import user_microservice.user.DAO.UserDAO;
 import user_microservice.user.model.User;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Autowired
-    private DAOUser userDAO;
+    private UserDAO userDAO;
 
     public List<User> findAllUsers() {return userDAO.findAll();}
 

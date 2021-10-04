@@ -7,7 +7,7 @@ import user_microservice.user.model.User;
 import java.util.Optional;
 
 @Repository
-public interface DAOUser extends JpaRepository<User, Long> {
+public interface UserDAO extends JpaRepository<User, Long> {
     Optional<User> findUsersByName(String name);
     Optional<User> findUsersByEmail(String email);
 }
