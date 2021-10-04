@@ -11,13 +11,28 @@ import java.util.Optional;
 @Service
 public class UserService {
     @Autowired
-    private DAOUser daoUser;
+    private DAOUser userDAO;
 
-    public List<User> findAllUsers() {return daoUser.findAll();}
+    public List<User> findAllUsers() {return userDAO.findAll();}
 
-    public Optional<User> findUserById(Long id) {return daoUser.findById(id);}
+    public Optional<User> findUserById(Long id) {return userDAO.findById(id);}
 
-    public Optional<User> findUserByName(String name) {return daoUser.findUsersByName(name);}
+    public Optional<User> findUserByName(String name) {return userDAO.findUsersByName(name);}
 
-    public Optional<User> findUserByEmail(String email) {return daoUser.findUsersByEmail(email);}
+    public Optional<User> findUserByEmail(String email) {return userDAO.findUsersByEmail(email);}
+
+    public void createUser(User user) {
+        userDAO.save(user);
+    }
+
+    public void updateUser(User user) {
+        User originalUser = userDAO.getById((long) user.getId());
+        if(originalUser != null) {
+            userDAO.save(user);
+        }
+    }
+
+    public void deleteUser(User user) {
+        userDAO.delete(user);
+    }
 }

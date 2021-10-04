@@ -21,8 +21,8 @@ public class ChallengeController {
     private RestTemplate restTemplate;
 
     @PostMapping("/register")
-    public void createChallenge() { //@RequestBody Challenge challenge
-        Challenge challenge = new Challenge(new Long(1), "Riddle for eureka???", "Answer!!!!", new Long(1), java.util.Calendar.getInstance().getTime(), java.util.Calendar.getInstance().getTime());
+    public void createChallenge(@RequestBody Challenge challenge) { //
+        //Challenge challenge = new Challenge(new Long(1), "Riddle for eureka???", "Answer!!!!", new Long(1), java.util.Calendar.getInstance().getTime(), java.util.Calendar.getInstance().getTime());
         service.createChallenge(challenge);
         Log log = new Log(1,"ChallengeService", "POST", challenge.toString());
 
