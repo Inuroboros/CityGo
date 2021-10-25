@@ -34,7 +34,6 @@ public class UserController {
 
     @PostMapping("/register")
     public void createUser(@RequestBody User user) { //
-        //User user = new User(new Long(1), "Riddle for eureka???", "Answer!!!!", new Long(1), java.util.Calendar.getInstance().getTime(), java.util.Calendar.getInstance().getTime());
         userService.createUser(user);
         Log log = new Log(1,"UserService", "POST", user.toString());
 
