@@ -25,7 +25,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../challenges-api" />
   </component>
   <component name="RunManager">
     <configuration name="AuthorizationApiApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -46,6 +46,7 @@
       <updated>1633976391369</updated>
       <workItem from="1633976392694" duration="495000" />
       <workItem from="1633977603365" duration="422000" />
+      <workItem from="1634022134983" duration="426000" />
     </task>
     <servers />
   </component>
