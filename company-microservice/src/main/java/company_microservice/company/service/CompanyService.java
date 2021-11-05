@@ -5,7 +5,9 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import company_microservice.company.DAO.CompanyDAO;
 import company_microservice.company.model.Company;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -14,6 +16,8 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
+@EnableHystrixDashboard
+@EnableHystrix
 public class CompanyService {
     @Autowired
     private CompanyDAO companyDAO;
@@ -31,6 +35,11 @@ public class CompanyService {
             threadPoolProperties = {
                     @HystrixProperty(name="coreSize", value="100"),
                     @HystrixProperty(name="maxQueueSize", value="50"),
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+                    @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "75"),
+                    @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "7000"),
+                    @HystrixProperty(name = "metrics.rollingStats.timeInMilliseconds", value = "15000"),
+                    @HystrixProperty(name = "metrics.rollingStats.numBuckets", value = "5")
             }
     )
     public Company getCompanyNameById(Long id){
