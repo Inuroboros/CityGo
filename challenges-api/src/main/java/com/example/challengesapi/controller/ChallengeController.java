@@ -1,6 +1,7 @@
 package com.example.challengesapi.controller;
 
 import com.example.challengesapi.model.Challenge;
+import com.example.challengesapi.model.DTO.ChallengeCompanyDTO;
 import com.example.challengesapi.model.Log;
 import com.example.challengesapi.service.ChallengeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/challenges")
@@ -24,12 +25,12 @@ public class ChallengeController {
     public void createChallenge(@RequestBody Challenge challenge) { //
         //Challenge challenge = new Challenge(new Long(1), "Riddle for eureka???", "Answer!!!!", new Long(1), java.util.Calendar.getInstance().getTime(), java.util.Calendar.getInstance().getTime());
         service.createChallenge(challenge);
-        Log log = new Log(1,"ChallengeService", "POST", challenge.toString());
-
-        HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
-
-        System.out.println(log.toString());
+//        Log log = new Log(1,"ChallengeService", "POST", challenge.toString());
+//
+//        HttpEntity<Log> request = new HttpEntity<>(log);
+//        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
+//
+//        System.out.println(log.toString());
     }
 
     @PutMapping("/update")
@@ -47,6 +48,17 @@ public class ChallengeController {
     public List<Challenge> getAllChallenges() {
         return service.getChallengeList();
     }
+
+    @GetMapping("/{id}")
+    public ChallengeCompanyDTO getChallengeDtoById(@PathVariable Long id){
+        return service.getChallengeDtoById(id);
+    }
+
+//    @GetMapping("/{id}")
+//    public Optional<Challenge> getChallengeById(@PathVariable Long id){
+//        return service.getChallenge(id);
+//    }
+
 
     @DeleteMapping("/delete")
     public void deleteChallenge(@RequestBody Challenge challenge) {

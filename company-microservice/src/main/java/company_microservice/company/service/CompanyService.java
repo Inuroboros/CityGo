@@ -15,17 +15,21 @@ public class CompanyService {
 
     public List<Company> findAllCompany() {return companyDAO.findAll();}
 
-    public Optional<Company> findCompanyById(Long id){return companyDAO.findById(id);}
-
-    public Optional<Company> findCompanyByName(String companyName){return companyDAO.findCompanyByCompanyName(companyName);}
-
-    public Optional<Company> findCompanyByBIK(String bik){return companyDAO.findCompanyByBIK(bik);}
-
-    public Optional<Company> findCompanyByAddress(String address){return companyDAO.findCompanyByAddress(address);}
+    public Company getCompanyById(Long id){return companyDAO.getById(id);}
+//
+//    public Optional<Company> findCompanyByName(String companyName){return companyDAO.findCompanyByCompanyName(companyName);}
+//
+//    public Optional<Company> findCompanyByBIK(String bik){return companyDAO.findCompanyByBIK(bik);}
+//
+//    public Optional<Company> findCompanyByAddress(String address){return companyDAO.findCompanyByAddress(address);}
 
     public void createCompany(Company company){
         companyDAO.save(company);}
 
     public void deleteCompany(Long id){
         companyDAO.deleteById(id);}
+
+    public Optional<Company> findById(Long id) {
+        return companyDAO.findById(id);
+    }
 }
