@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableJpaAuditing
 @EnableEurekaClient
 
-//@EnableCircuitBreaker
+@EnableCircuitBreaker
 //@EnableHystrixDashboard
 //@EnableHystrix
 public class ChallengesApiApplication {

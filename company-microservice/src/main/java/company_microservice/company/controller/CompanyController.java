@@ -30,7 +30,6 @@ public class CompanyController {
         System.out.println(log.toString());
 
         return companyService.findAllCompany();
-
     }
 
     @GetMapping("/{id}")

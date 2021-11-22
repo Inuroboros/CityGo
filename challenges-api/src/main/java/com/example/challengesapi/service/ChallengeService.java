@@ -7,6 +7,8 @@ import com.example.challengesapi.model.DTO.ChallengeCompanyDTO;
 import com.example.challengesapi.model.Log;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 //import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ public class ChallengeService {
     private RestTemplate restTemplate;
 
 
+
     public void createChallenge(Challenge challenge) {
         //При создании объекта мы получаем айди спонсора, и мы перед тем как создать такой челлендж
         //должны удостовериться что спонсор по такому айдишнику существует, для этого мы попытаемя получить
@@ -34,13 +37,12 @@ public class ChallengeService {
 
         if(cp != null) {
             challengeDAO.save(challenge);
-
-            Log log = new Log(1, "ChallengeService", "POST", challenge.toString());
-
-            HttpEntity<Log> request = new HttpEntity<>(log);
-            restTemplate.postForObject("http://logging-api/logs", request, Log.class);
-
-            System.out.println(log.toString());
+//            Log log = new Log(1, "ChallengeService", "POST", challenge.toString());
+//
+//            HttpEntity<Log> request = new HttpEntity<>(log);
+//            restTemplate.postForObject("http://logging-api/logs", request, Log.class);
+//
+//            System.out.println(log.toString());
         } else {
             System.out.println("Company not found! Challenge not created!");
         }
@@ -55,30 +57,32 @@ public class ChallengeService {
     }
 
     public void updateChallenge(Challenge challenge) {
+
         Challenge originalChallenge = challengeDAO.getById(challenge.getId());
         if (originalChallenge != null) {
             challengeDAO.save(challenge);
         }
     }
 
-//
+
 //    @HystrixCommand(
 //            fallbackMethod = "getChallengeDtoByIdFallback",
 //            threadPoolKey = "getChallengeDtoById",
 //            threadPoolProperties = {
 //                    @HystrixProperty(name = "core$size", value="100"),
-//                    @HystrixProperty(name = "maxQueueSize", value = "50")
+//                    @HystrixProperty(name = "maxQueueSize", value = "50"),
 //            }
 //    )
+
+    @HystrixCommand(
+            fallbackMethod = "getChallengeDtoByIdFallback"
+    )
     public ChallengeCompanyDTO getChallengeDtoById(Long id) {
         Optional<Challenge> challenge = challengeDAO.findById(id);
 
-        System.out.println("+++++++++++++++++++++" + challenge.toString());
         Company cp = restTemplate.getForObject("http://company-crud-api/company/" + Long.toString(challenge.get().getSponsorId()), Company.class);
-        System.out.println("==================" + cp.toString());
 
         ChallengeCompanyDTO challengeCompanyDTO = new ChallengeCompanyDTO(challenge, cp);
-        //System.out.println(challengeCompanyDTO.toString());
 
         return challengeCompanyDTO;
     }
@@ -92,7 +96,6 @@ public class ChallengeService {
     }
 
     public Optional<Challenge> getChallenge(Long id) {
-        //return challengeDAO.getById(id);
         return challengeDAO.findById(id);
     }
 }
