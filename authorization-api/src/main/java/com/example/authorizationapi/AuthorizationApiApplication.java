@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @EnableEurekaClient
+@EnableCircuitBreaker
 public class AuthorizationApiApplication {
 
     public static void main(String[] args) {
