@@ -30,34 +30,35 @@ public class CompanyController {
         System.out.println(log.toString());
 
         return companyService.findAllCompany();
-
     }
 
     @GetMapping("/{id}")
-    public Optional<Company> findCompanyById(@PathVariable Long id){
-        Log log = new Log(1, "CompanyService", "GET", companyService.findCompanyById(id).toString());
+    public Optional<Company> getCompanyById(@PathVariable(value = "id") Long id){
+        Log log = new Log(1, "CompanyService", "GET", companyService.findById(id).toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
         restTemplate.postForObject("http://logging-api/logs", request, Log.class);
         System.out.println(log.toString());
 
-        return companyService.findCompanyById(id);
-    }
+        //return companyService.getCompanyById(id);
+        return  companyService.findById(id);
 
-    @GetMapping("/companyName/{companyName}")
-    public Optional<Company> findCompanyByName(@PathVariable String companyName){
-        return companyService.findCompanyByName(companyName);
     }
-
-    @GetMapping("/bik/{bik}")
-    public Optional<Company> findCompanyByBIK(@PathVariable String bik){
-        return companyService.findCompanyByBIK(bik);
-    }
-
-    @GetMapping("/address/{address}")
-    public Optional<Company> findCompanyByAddress(@PathVariable String address){
-        return companyService.findCompanyByAddress(address);
-    }
+//
+//    @GetMapping("/companyName/{companyName}")
+//    public Optional<Company> findCompanyByName(@PathVariable String companyName){
+//        return companyService.findCompanyByName(companyName);
+//    }
+//
+//    @GetMapping("/bik/{bik}")
+//    public Optional<Company> findCompanyByBIK(@PathVariable String bik){
+//        return companyService.findCompanyByBIK(bik);
+//    }
+//
+//    @GetMapping("/address/{address}")
+//    public Optional<Company> findCompanyByAddress(@PathVariable String address){
+//        return companyService.findCompanyByAddress(address);
+//    }
 
     @PostMapping("/create")
     public void createCompany(@RequestBody Company company){
@@ -72,7 +73,7 @@ public class CompanyController {
 
     @DeleteMapping("/{id}")
     public void deleteCompany(@PathVariable Long id){
-        Log log = new Log(1, "CompanyService", "DELETE", companyService.findCompanyById(id).toString());
+        Log log = new Log(1, "CompanyService", "DELETE", companyService.getCompanyById(id).toString());
 
         HttpEntity<Log> request = new HttpEntity<>(log);
         restTemplate.postForObject("http://logging-api/logs", request, Log.class);

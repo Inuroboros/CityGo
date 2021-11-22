@@ -48,13 +48,13 @@ public class CompanyService {
 
     public List<Company> findAllCompany() {return companyDAO.findAll();}
 
-    public Optional<Company> findCompanyById(Long id){return companyDAO.findById(id);}
-
-    public Optional<Company> findCompanyByName(String companyName){return companyDAO.findCompanyByCompanyName(companyName);}
-
-    public Optional<Company> findCompanyByBIK(String bik){return companyDAO.findCompanyByBIK(bik);}
-
-    public Optional<Company> findCompanyByAddress(String address){return companyDAO.findCompanyByAddress(address);}
+    public Company getCompanyById(Long id){return companyDAO.getById(id);}
+//
+//    public Optional<Company> findCompanyByName(String companyName){return companyDAO.findCompanyByCompanyName(companyName);}
+//
+//    public Optional<Company> findCompanyByBIK(String bik){return companyDAO.findCompanyByBIK(bik);}
+//
+//    public Optional<Company> findCompanyByAddress(String address){return companyDAO.findCompanyByAddress(address);}
 
     public String getCompanyBIKByIdFallBack(Long id){
         return "BIK is not available";
@@ -73,6 +73,7 @@ public class CompanyService {
     public void deleteCompany(Long id){
         companyDAO.deleteById(id);}
 
+<<<<<<< HEAD
     public List<Company> getAllCompany(){
         List<Company> companyList = new ArrayList<>();
         List<Long> companyIds = new ArrayList<>();
@@ -83,5 +84,9 @@ public class CompanyService {
             companyList.add(company);
         }
         return companyList;
+=======
+    public Optional<Company> findById(Long id) {
+        return companyDAO.findById(id);
+>>>>>>> master
     }
 }
