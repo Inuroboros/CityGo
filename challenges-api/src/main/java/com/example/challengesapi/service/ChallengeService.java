@@ -25,6 +25,12 @@ public class ChallengeService {
     @Autowired
     private RestTemplate restTemplate;
 
+    public void createLog(Long userId, String action, String description){
+        Log log = new Log(userId, "ChallengeService", action, description);
+        HttpEntity<Log> request = new HttpEntity<>(log);
+        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
+        System.out.println(log.toString());
+    }
 
 
     public void createChallenge(Challenge challenge) {
@@ -37,6 +43,7 @@ public class ChallengeService {
 
         if(cp != null) {
             challengeDAO.save(challenge);
+            createLog(1L, "POST", "Created: " + challenge.toString());
 //            Log log = new Log(1, "ChallengeService", "POST", challenge.toString());
 //
 //            HttpEntity<Log> request = new HttpEntity<>(log);
@@ -44,19 +51,23 @@ public class ChallengeService {
 //
 //            System.out.println(log.toString());
         } else {
+            createLog(1L, "POST", "Not created: " + challenge.toString());
             System.out.println("Company not found! Challenge not created!");
         }
     }
 
     public List<Challenge> getChallengeList() {
+        createLog(1L, "GET", "List of challenge");
         return challengeDAO.findAll();
     }
 
     public void deleteChallenge(Challenge challenge) {
+        createLog(1L, "DELETE", "Delete: " + challenge.toString());
         challengeDAO.delete(challenge);
     }
 
     public void updateChallenge(Challenge challenge) {
+        createLog(1L, "UPDATE", "Update: " + challenge.toString());
 
         Challenge originalChallenge = challengeDAO.getById(challenge.getId());
         if (originalChallenge != null) {
@@ -84,6 +95,7 @@ public class ChallengeService {
 
         ChallengeCompanyDTO challengeCompanyDTO = new ChallengeCompanyDTO(challenge, cp);
 
+        createLog(1L, "GET", "Get Challenge DTO: " + challengeCompanyDTO.toString());
         return challengeCompanyDTO;
     }
 
@@ -92,10 +104,12 @@ public class ChallengeService {
         Company cp = new Company(0, "Not found", "0000", "empty address");
 
         ChallengeCompanyDTO challengeCompanyDTO = new ChallengeCompanyDTO(challenge, cp);
+        createLog(1L, "GET", "Get Challenge DTO: " + challengeCompanyDTO.toString());
         return challengeCompanyDTO;
     }
 
     public Optional<Challenge> getChallenge(Long id) {
+        createLog(1L, "GET", "Get Challenge by id: " + id);
         return challengeDAO.findById(id);
     }
 }
