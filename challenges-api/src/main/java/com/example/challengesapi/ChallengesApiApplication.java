@@ -9,6 +9,8 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 ////import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 //import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 //import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.web.client.RestTemplate;
@@ -18,8 +20,8 @@ import org.springframework.web.client.RestTemplate;
 @EnableEurekaClient
 
 @EnableCircuitBreaker
-//@EnableHystrixDashboard
-//@EnableHystrix
+@EnableHystrixDashboard
+@EnableHystrix
 public class ChallengesApiApplication {
 
 	@Bean
