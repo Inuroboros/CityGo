@@ -22,12 +22,12 @@ public class CompanyController {
 
     @GetMapping("")
     public List<Company> findAllCompanies(){
-        Log log = new Log(1, "CompanyService", "GET", "List of companies");
-
-        HttpEntity<Log> request = new HttpEntity<>(log);
-        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
-
-        System.out.println(log.toString());
+//        Log log = new Log(1, "CompanyService", "GET", "List of companies");
+//
+//        HttpEntity<Log> request = new HttpEntity<>(log);
+//        restTemplate.postForObject("http://logging-api/logs", request, Log.class);
+//
+//        System.out.println(log.toString());
 
         return companyService.findAllCompany();
     }
