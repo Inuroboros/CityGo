@@ -27,7 +27,7 @@ public class CompanyService {
     @Autowired
     private CompanyDAO companyDAO;
 
-<<<<<<< HEAD
+
     private RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "getCompanyBIKByIdFallBack")
@@ -53,7 +53,7 @@ public class CompanyService {
     }
 
     public List<Company> findAllCompany() {return companyDAO.findAll();}
-=======
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -68,7 +68,6 @@ public class CompanyService {
 //    @HystrixCommand(
 //            fallbackMethod = "getChallengeDtoByIdFallback"
 //    )
->>>>>>> zuultry
 
 
     public List<Company> findAllCompany() {

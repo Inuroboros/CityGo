@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-<<<<<<< HEAD
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-      </profile>
-    </annotationProcessing>
-=======
->>>>>>> master
     <bytecodeTargetLevel>
       <module name="front-service" target="11" />
     </bytecodeTargetLevel>
   </component>
-<<<<<<< HEAD
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="front-service" options="-parameters" />
-    </option>
-  </component>
-=======
->>>>>>> master
 </project>
