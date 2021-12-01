@@ -6,13 +6,11 @@ import company_microservice.company.DAO.CompanyDAO;
 import company_microservice.company.model.Company;
 import company_microservice.company.model.Log;
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
-=======
 import org.springframework.http.HttpEntity;
->>>>>>> zuultry
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,6 +26,7 @@ public class CompanyService {
     private CompanyDAO companyDAO;
 
 
+    @Autowired
     private RestTemplate restTemplate;
 
     @HystrixCommand(fallbackMethod = "getCompanyBIKByIdFallBack")
@@ -52,10 +51,6 @@ public class CompanyService {
         return restTemplate.getForObject("http://companyapplication/company/companyName/" + id, Company.class);
     }
 
-    public List<Company> findAllCompany() {return companyDAO.findAll();}
-
-    @Autowired
-    private RestTemplate restTemplate;
 
     public void createLog(Long userId, String action, String description){
         Log log = new Log(userId, "CompanyService", action, description);
@@ -100,9 +95,9 @@ public class CompanyService {
     }
 
     public Company getCompanyNameByIdFallback(Long id){
-        Company company = new Company();
-        company.setId(101);
-        company.setCompanyName("Name is not available");
+        Company company = new Company(0L,"Name is not available", "0000000", "Not available" );
+//        company.setId(101L);
+//        company.setCompanyName("Name is not available");
         return company;
     }
 
@@ -116,21 +111,31 @@ public class CompanyService {
         companyDAO.deleteById(id);
     }
 
-<<<<<<< HEAD
-    public List<Company> getAllCompany(){
+
+    public List<Company> getAllCompany() {
         List<Company> companyList = new ArrayList<>();
         List<Long> companyIds = new ArrayList<>();
-        for (Long id : companyIds){
+        for (Long id : companyIds) {
             Company company = getCompanyNameById(id);
             String BIK = getCompanyBIKById(id);
             company.setBIK(BIK);
             companyList.add(company);
         }
         return companyList;
-=======
+    }
+
     public Optional<Company> findById(Long id) {
         createLog(1L, "GET", "Get company, id = " + id);
         return companyDAO.findById(id);
->>>>>>> master
+
     }
 }
+
+
+
+
+/*
+
+
+
+* */
