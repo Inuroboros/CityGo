@@ -35,5 +35,6 @@ Place service used for creation places. User can share intresting place and our 
 This service has information about different organization. With this service user can find people that has same interests.
 
 ## Diagram.
-![image](https://user-images.githubusercontent.com/63921220/146835954-b73a2882-99f9-4671-b473-bc33e660d4d3.png)
+![image](https://user-images.githubusercontent.com/63921220/146836371-1d20248d-85e4-4294-bdae-ff91205f7504.png)
+
 
