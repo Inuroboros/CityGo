@@ -33,3 +33,7 @@ Place service used for creation places. User can share intresting place and our 
 ## Guild Service. 
 
 This service has information about different organization. With this service user can find people that has same interests.
+
+## Diagram.
+![image](https://user-images.githubusercontent.com/63921220/146835954-b73a2882-99f9-4671-b473-bc33e660d4d3.png)
+
