@@ -32,7 +32,6 @@ public class ChallengeService {
         System.out.println(log.toString());
     }
 
-
     public void createChallenge(Challenge challenge) {
         //При создании объекта мы получаем айди спонсора, и мы перед тем как создать такой челлендж
         //должны удостовериться что спонсор по такому айдишнику существует, для этого мы попытаемя получить
@@ -44,12 +43,6 @@ public class ChallengeService {
         if(cp != null) {
             challengeDAO.save(challenge);
             createLog(1L, "POST", "Created: " + challenge.toString());
-//            Log log = new Log(1, "ChallengeService", "POST", challenge.toString());
-//
-//            HttpEntity<Log> request = new HttpEntity<>(log);
-//            restTemplate.postForObject("http://logging-api/logs", request, Log.class);
-//
-//            System.out.println(log.toString());
         } else {
             createLog(1L, "POST", "Not created: " + challenge.toString());
             System.out.println("Company not found! Challenge not created!");

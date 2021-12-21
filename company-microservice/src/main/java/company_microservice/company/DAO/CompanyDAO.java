@@ -9,9 +9,9 @@ import java.util.Optional;
 @Repository
 public interface CompanyDAO extends JpaRepository<Company, Long> {
 
-//    Optional<Company> findCompanyByCompanyName(String companyName);
-//
-//    Optional<Company> findCompanyByBIK(String bik);
-//
-//    Optional<Company> findCompanyByAddress(String address);
+    Optional<Company> findCompanyByCompanyName(String companyName);
+
+    Optional<Company> findCompanyByBIK(String bik);
+
+    Optional<Company> findCompanyByAddress(String address);
 }
