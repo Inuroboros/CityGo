@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.eurekaclinical:eurekaclinical-common:1.0-Alpha-7">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eurekaclinical/eurekaclinical-common/1.0-Alpha-7/eurekaclinical-common-1.0-Alpha-7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eurekaclinical/eurekaclinical-common/1.0-Alpha-7/eurekaclinical-common-1.0-Alpha-7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/eurekaclinical/eurekaclinical-common/1.0-Alpha-7/eurekaclinical-common-1.0-Alpha-7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
