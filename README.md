@@ -22,3 +22,19 @@ Its essence is to create, store, modify, publish, and display challenges. As wel
 
 The service for gaining access to information about users will have a function that will include such features as getting a nickname, email, phone number by ID or by other parameters. That is, it is a service for finding information on clients. Also, this service will be able to receive a list of customers, which of course will be convenient for compiling ratings, or simply for finding the coincidence of nicknames during registration, etc. The service will have full control over customer information, help the customer update information, and so on. A separate database will store all this data and define the ID of the user as the key parameter of the database.
 
+## Email Service.
+
+The service need for send messages via email. This service we can used in place-service and guilds-service.
+
+## Place Service.
+
+Place service used for creation places. User can share intresting place and our application will draw it in list.
+
+## Guild Service. 
+
+This service has information about different organization. With this service user can find people that has same interests.
+
+## Diagram.
+![image](https://user-images.githubusercontent.com/63921220/146836371-1d20248d-85e4-4294-bdae-ff91205f7504.png)
+
+
